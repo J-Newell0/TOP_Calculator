@@ -1,9 +1,61 @@
 .main{
     display: flex;
     justify-content: center;
-
+    height: 70vh;
+    min-height: 600px;
+    margin-top: 80px;
+    padding: 10px;
 }
+
+.caculator{
+    padding: 25px;
+    width: 400px;
+    height: 450px;
+    border: 2px solid black;
+    border-radius: 15px;
+    background-color:rgb(150, 150, 150);
+}
+
 .buttonsGrid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.btn {
+    padding: 15px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.btn-operator{
+    background-color: rgb(131, 17, 135);
+}
+
+.btn-darkblue{
+    background-color: rgb(36, 12, 118) ;
+    color: white;
+}
+
+.span-2{
+    grid-column: span 2;
+}
+
+.display{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    height: 85px;
+    margin-bottom: 20px;
+    text-align: right;
+    background-color: rgb(201, 201, 201)
+}
+
+.currentOperation{
+    font-size: 25px;
+    margin-top: 25px;
+}
+.lastOperation{
+    font-size: 15px;
 }

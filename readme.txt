@@ -12,6 +12,6 @@ When completed, this webpage should be able to do the following:
 * User will be able to delete wrongly entered numbers.
 * Have a 2nd "display" above current inputs showing previous operation
 * Be able to string several operations together. eg ( 12 + 7 -5 * 3 ) = 42
-        but do each operation seperately. It should evaluate the first
-        expression, then use this result as the first number in the new
-        calculation.
+    but do each operation seperately. It should evaluate the first
+    expression, then use this result as the first number in the new
+    calculation.
