@@ -15,35 +15,53 @@ const lastOperationScreen = document.getElementById('lastOperation');
 const currentOperationScreen = document.getElementById('currentOperation');
 
 //Global Event Listners
-clearButton.addEventListener('click', clearScreen);
-
-
-
+clearButton.addEventListener('click', resetScreen);
+equalsButton.addEventListener('click', tagNumberTwo);
 
 numberButtons.forEach((button) => {
-    button.addEventListener('click', () => {tagNumber(button.textContent)
+    button.addEventListener('click', () => {tagNumberOne(button.textContent)
     });
 });
 
-operationButton.forEach((button) =>{
+operationButton.forEach((button) => {
     button.addEventListener('click', () => {tagOperator(button.textContent)
     }); 
 });
 
-function tagNumber(number){
+//Allows display of numbers on bottom screen(currentOperationsScreen)
+function tagNumberOne(number){
     if ( currentOperationScreen.textContent === '0' || clearDisplay == true) {
-        resetScreen();
-    }  
+        clearScreen();
+    } 
     currentOperationScreen.textContent += number; 
 }
 
-function tagOperator() {
+//accepts an operator and holds number on currentOperationScreen
+function tagOperator(operator) {
 
+    if (currentOperation !== null) {
+        tagNumberTwo()
+    }
+    holdOne = currentOperationScreen.textContent;
+    currentOperation = operator;
+    lastOperationScreen.textContent = `${holdOne} ${currentOperation}`;
+    clearDisplay = true; 
 }
 
 
-//
-function clearScreen() {
+
+function tagNumberTwo() {
+    holdTwo = currentOperationScreen.textContent;
+
+    currentOperationScreen.textContent = operate(currentOperation, holdOne, holdTwo);
+    lastOperationScreen.textContent = `${holdOne} ${currentOperation} ${holdTwo} =`;
+    
+    currentOperation = null;
+}
+
+
+//Resets screen to default values
+function resetScreen() {
     currentOperationScreen.textContent = '0';
     lastOperationScreen.textContent = 'xxx';
     holdOne = '';
@@ -51,14 +69,14 @@ function clearScreen() {
     currentOperation = null;
 }
 
-
-function resetScreen() {
+//Allows tagNumber() to remove leading 0
+function clearScreen() {
     currentOperationScreen.textContent = '';
     clearDisplay = false;
 }
 
-function add(a,b){
-    return a + b
+function add(holdOne,holdTwo){
+    return holdOne + holdTwo
 }
 
 function subtract(a,b){
@@ -80,17 +98,19 @@ function operate(operator, a, b){
     switch(operator) {
         
         case '+' :
-            add(a,b);
+            return add(a,b);
             // break;
         case '-' :
-            subtract(a,b);
+           return subtract(a,b);
             // break;
-        case '*' :
-            multiply(a,b);
+        case 'x' :
+           return multiply(a,b);
             // break;
-        case '/' :
-            if (b === 0)return null
-            else return divide(a,b);
+        case '÷' :
+            if (b === 0) {
+                 alert('Haha, nice one! You can\'t divide by 0!');
+                 return null
+            } else return divide(a,b);
             // break;
 
         }
