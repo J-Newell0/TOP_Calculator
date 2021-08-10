@@ -3,7 +3,7 @@ let holdTwo = '';
 let currentOperation = null;
 let clearDisplay = false;
 
-//Buttons
+//DOM Element Buttons
 const clearButton = document.getElementById('clearBtn');
 const deleteButton = document.getElementById('deleteBtn');
 const equalsButton =  document.getElementById('equalsBtn');
@@ -17,6 +17,8 @@ const currentOperationScreen = document.getElementById('currentOperation');
 //Global Event Listners
 clearButton.addEventListener('click', resetScreen);
 equalsButton.addEventListener('click', tagNumberTwo);
+deleteButton.addEventListener('click', deleteNum);
+decimalButton.addEventListener('click', addDecimal);
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', () => {tagNumberOne(button.textContent)
@@ -49,16 +51,35 @@ function tagOperator(operator) {
 }
 
 
-
+// stores holdTwo value, initilizes operate();
 function tagNumberTwo() {
     holdTwo = currentOperationScreen.textContent;
 
     currentOperationScreen.textContent = operate(currentOperation, holdOne, holdTwo);
-    lastOperationScreen.textContent = `${holdOne} ${currentOperation} ${holdTwo} =`;
+    lastOperationScreen.textContent = `${holdOne} ${currentOperation} ${holdTwo} = `;
     
     currentOperation = null;
 }
 
+//Allows decimals 
+function addDecimal() {
+    if (clearDisplay) {
+        clearScreen();
+    }
+    if (currentOperationScreen.textContent.includes('.')) {
+        return
+    }
+    if (currentOperationScreen.textContent === '') {
+        currentOperationScreen.textContent = '0';
+    } 
+    
+    currentOperationScreen.textContent += '.';
+    }
+
+//converts currentOperationsScreen to a string, allows user to remove number
+function deleteNum() {
+    currentOperationScreen.textContent = currentOperationScreen.textContent.toString().slice(0,-1);
+}
 
 //Resets screen to default values
 function resetScreen() {
@@ -75,8 +96,8 @@ function clearScreen() {
     clearDisplay = false;
 }
 
-function add(holdOne,holdTwo){
-    return holdOne + holdTwo
+function add(a,b){
+    return a + b
 }
 
 function subtract(a,b){
