@@ -7,6 +7,10 @@
     padding: 10px;
 }
 
+.bodyColor{
+    background-color:rgb(150, 150, 150);
+}
+
 .caculator{
     padding: 25px;
     width: 400px;
@@ -30,11 +34,11 @@
 }
 
 .btn-operator{
-    background-color: rgb(131, 17, 135);
+    background-color: #FFE0D6;
 }
 
-.btn-darkblue{
-    background-color: rgb(36, 12, 118) ;
+.btn-topColor{
+    background-color: #E29578 ;
     color: white;
 }
 
