@@ -1,5 +1,4 @@
-The goal of this project is to make a Vaporwave inspired 
-cacluator based on the requirements from The Odin Project. 
+The goal of this project is to make a  cacluator based on the requirements from The Odin Project. 
 
 When completed, this webpage should be able to do the following:
 
